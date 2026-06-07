@@ -17,9 +17,11 @@
       <p class="site-tagline">{{ site.tagline }}</p>
       <nav class="site-nav">
         <a href="{{ '/' | relative_url }}">Ballina</a>
-        {% for cat in site.categories_list %}
-          <a href="{{ '/categories/' | append: cat | downcase | replace: ' ', '-' | append: '/' | relative_url }}">{{ cat }}</a>
-        {% endfor %}
+        {% if site.show_categories %}
+          {% for cat in site.categories_list %}
+            <a href="{{ '/categories/' | append: cat | downcase | replace: ' ', '-' | append: '/' | relative_url }}">{{ cat }}</a>
+          {% endfor %}
+        {% endif %}
         <a href="{{ '/rreth/' | relative_url }}">Rreth</a>
       </nav>
     </div>

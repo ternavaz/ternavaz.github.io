@@ -17,11 +17,15 @@ github_username: "ternavaz"
 facebook_url: "https://www.facebook.com/zekrijah.ternava"
 rss: true
 
-# Komentet me utterances. Vendos repo në formën "pronar/depo" dhe instalo
-# aplikacionin utterances te depoja: https://github.com/apps/utterances
+# Komentet me shtojcën e Facebook-ut. Lexuesit komentojnë me llogarinë e tyre
+# të Facebook-ut. Krijo një aplikacion te https://developers.facebook.com,
+# merr App ID-në dhe vendose më poshtë.
 comments:
   enabled: true
-  repo: "ternavaz/ternavaz.github.io"
+  fb_app_id: ""
+
+# Shfaq menynë e temave (Tjera). Vendos false për ta fshehur pa e fshirë.
+show_categories: false
 
 # --- Cilësimet e ndërtimit ------------------------------------------------
 markdown: kramdown

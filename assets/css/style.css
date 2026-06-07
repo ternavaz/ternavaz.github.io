@@ -1,18 +1,18 @@
 /* ==========================================================================
    Zekrijah Tërnava — blog i thjeshtë, i mirëmbajtur me dorë
-   Paleta: letër e ngrohtë + theks i thellë kumbull, për një ndjesi të qetë.
+   Paleta: letër e ngrohtë me një theks të gjelbër të qetë, për një ndjesi të ngrohtë.
    Mbështetje për shkronjat shqipe dhe arabe.
    ========================================================================== */
 
 :root {
-  --bg:        #faf7f2;  /* warm paper            */
+  --bg:        #f6f4ec;  /* warm paper, soft green tint */
   --surface:   #ffffff;  /* cards / sidebar       */
-  --text:      #2c2a2e;  /* near-black, warm      */
-  --muted:     #6f6a72;  /* secondary text        */
-  --accent:    #6d4c7d;  /* deep plum             */
-  --accent-dk: #543a61;  /* hover / active        */
-  --line:      #e7e0d8;  /* hairline borders      */
-  --tag-bg:    #efe8f1;  /* soft plum tint        */
+  --text:      #2b2d28;  /* near-black, warm      */
+  --muted:     #6c6f64;  /* secondary text        */
+  --accent:    #5f7d52;  /* warm sage green       */
+  --accent-dk: #4a6541;  /* hover / active        */
+  --line:      #e4e2d4;  /* warm hairline borders */
+  --tag-bg:    #e8eddd;  /* soft green tint       */
 
   --measure: 70ch;
   --radius: 8px;

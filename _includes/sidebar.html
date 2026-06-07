@@ -5,6 +5,7 @@
     <p><a href="{{ '/rreth/' | relative_url }}">Lexo më shumë &rarr;</a></p>
   </section>
 
+  {% if site.show_categories %}
   <section class="widget">
     <h2 class="widget-title">Temat</h2>
     <ul class="widget-list">
@@ -13,6 +14,7 @@
       {% endfor %}
     </ul>
   </section>
+  {% endif %}
 
   <section class="widget">
     <h2 class="widget-title">Postimet e fundit</h2>

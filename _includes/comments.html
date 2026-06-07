@@ -1,19 +1,20 @@
 {%- comment -%}
-  Komentet me utterances, që i ruan komentet si çështje (issues) në GitHub.
-  Aktivizohen vetëm nëse site.comments.enabled është true dhe është dhënë depoja.
-  Kërkohet që aplikacioni utterances të jetë instaluar te depoja:
-  https://github.com/apps/utterances
+  Komentet me shtojcën e Facebook-ut. Lexuesit komentojnë me llogarinë e tyre
+  të Facebook-ut, pa pasur nevojë për GitHub. Aktivizohet vetëm nëse
+  site.comments.enabled është true dhe është dhënë site.comments.fb_app_id.
 {%- endcomment -%}
-{%- if site.comments.enabled and site.comments.repo != "" -%}
+{%- if site.comments.enabled and site.comments.fb_app_id != "" -%}
 <section class="comments" aria-label="Komentet">
   <h2 class="comments-title">Komentet</h2>
-  <script src="https://utteranc.es/client.js"
-          repo="{{ site.comments.repo }}"
-          issue-term="pathname"
-          label="koment"
-          theme="github-light"
-          crossorigin="anonymous"
-          async>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+          src="https://connect.facebook.net/sq_AL/sdk.js#xfbml=1&version=v19.0&appId={{ site.comments.fb_app_id }}">
   </script>
+  <div class="fb-comments"
+       data-href="{{ page.url | absolute_url }}"
+       data-width="100%"
+       data-numposts="10"
+       data-order-by="reverse_time">
+  </div>
 </section>
 {%- endif -%}
