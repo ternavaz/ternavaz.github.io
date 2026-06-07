@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Të turërosh nga emri ..."
+title: "Të turpërosh nga emri ..."
 date: 2026-04-10 09:00:00 +0200
 categories: [Tjera]
 ---
