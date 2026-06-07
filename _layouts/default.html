@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'sq' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if site.rss %}<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">{% endif %}
+  {% feed_meta %}
+  {% seo %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Kalo te përmbajtja</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <p class="site-tagline">{{ site.tagline }}</p>
+      <nav class="site-nav">
+        <a href="{{ '/' | relative_url }}">Ballina</a>
+        {% for cat in site.categories_list %}
+          <a href="{{ '/categories/' | append: cat | downcase | replace: ' ', '-' | append: '/' | relative_url }}">{{ cat }}</a>
+        {% endfor %}
+        <a href="{{ '/rreth/' | relative_url }}">Rreth</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout wrap">
+    <main id="main" class="content">
+      {{ content }}
+    </main>
+    {% include sidebar.html %}
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. Ndërtuar me <a href="https://jekyllrb.com/">Jekyll</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

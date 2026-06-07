@@ -1,0 +1,19 @@
+{%- comment -%}
+  Komentet me utterances, që i ruan komentet si çështje (issues) në GitHub.
+  Aktivizohen vetëm nëse site.comments.enabled është true dhe është dhënë depoja.
+  Kërkohet që aplikacioni utterances të jetë instaluar te depoja:
+  https://github.com/apps/utterances
+{%- endcomment -%}
+{%- if site.comments.enabled and site.comments.repo != "" -%}
+<section class="comments" aria-label="Komentet">
+  <h2 class="comments-title">Komentet</h2>
+  <script src="https://utteranc.es/client.js"
+          repo="{{ site.comments.repo }}"
+          issue-term="pathname"
+          label="koment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
+{%- endif -%}

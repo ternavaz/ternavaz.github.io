@@ -1,0 +1,372 @@
+/* ==========================================================================
+   Zekrijah Tërnava — blog i thjeshtë, i mirëmbajtur me dorë
+   Paleta: letër e ngrohtë + theks i thellë kumbull, për një ndjesi të qetë.
+   Mbështetje për shkronjat shqipe dhe arabe.
+   ========================================================================== */
+
+:root {
+  --bg:        #faf7f2;  /* warm paper            */
+  --surface:   #ffffff;  /* cards / sidebar       */
+  --text:      #2c2a2e;  /* near-black, warm      */
+  --muted:     #6f6a72;  /* secondary text        */
+  --accent:    #6d4c7d;  /* deep plum             */
+  --accent-dk: #543a61;  /* hover / active        */
+  --line:      #e7e0d8;  /* hairline borders      */
+  --tag-bg:    #efe8f1;  /* soft plum tint        */
+
+  --measure: 70ch;
+  --radius: 8px;
+  /* Stivat e shkronjave përfshijnë fonte që mbështesin arabishten. */
+  --font-serif: Georgia, 'Times New Roman', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Geeza Pro', serif;
+  --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, 'Noto Sans Arabic', sans-serif;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html { font-size: 18px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-dk); text-decoration: underline; }
+
+img { max-width: 100%; height: auto; border-radius: var(--radius); }
+
+.skip-link {
+  position: absolute; left: -999px;
+}
+.skip-link:focus {
+  left: 1rem; top: 1rem; z-index: 10;
+  background: var(--accent); color: #fff; padding: .5rem .75rem; border-radius: var(--radius);
+}
+
+/* --- Header -------------------------------------------------------------- */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 1.75rem 0 1rem;
+}
+
+.site-title {
+  display: inline-block;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.site-title:hover { color: var(--accent); text-decoration: none; }
+
+.site-tagline {
+  margin: .25rem 0 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.site-nav {
+  font-family: var(--font-sans);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.site-nav a {
+  display: inline-block;
+  margin-right: 1.1rem;
+  padding: .15rem 0;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+
+/* --- Layout (content + sidebar) ----------------------------------------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 3rem;
+  padding: 2.5rem 1.25rem;
+}
+
+.content { min-width: 0; }
+
+/* --- Post listing (home) ------------------------------------------------- */
+.post-list { list-style: none; margin: 0; padding: 0; }
+
+.post-list-item {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+.post-list-item:last-child { border-bottom: 0; }
+
+.post-list-item h2 {
+  font-size: 1.55rem;
+  line-height: 1.25;
+  margin: 0 0 .35rem;
+}
+.post-list-item h2 a { color: var(--text); }
+.post-list-item h2 a:hover { color: var(--accent); text-decoration: none; }
+
+.post-excerpt { color: #3c393e; }
+
+.read-more {
+  font-family: var(--font-sans);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* --- Single post --------------------------------------------------------- */
+.post-title, .page-title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 .4rem;
+}
+
+.post-meta {
+  font-family: var(--font-sans);
+  font-size: .82rem;
+  color: var(--muted);
+  margin: 0 0 2rem;
+}
+.post-meta .sep { margin: 0 .5rem; }
+.post-meta .category { text-transform: uppercase; letter-spacing: .05em; }
+
+.post-content { font-size: 1.05rem; }
+.post-content h2 { font-size: 1.5rem; margin-top: 2.2rem; }
+.post-content h3 { font-size: 1.2rem; margin-top: 1.8rem; }
+
+.post-content blockquote {
+  margin: 1.5rem 0;
+  padding: .25rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.post-content pre,
+.post-content code {
+  font-family: 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  font-size: .9rem;
+}
+.post-content code {
+  background: var(--tag-bg);
+  padding: .12rem .35rem;
+  border-radius: 4px;
+}
+.post-content pre {
+  background: #2c2a2e;
+  color: #f3eef5;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+.post-content pre code { background: none; padding: 0; color: inherit; }
+
+.post-tags { margin-top: 2.5rem; }
+.tag, .post-list-item .tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  background: var(--tag-bg);
+  color: var(--accent-dk);
+  padding: .2rem .55rem;
+  margin: 0 .35rem .35rem 0;
+  border-radius: 100px;
+}
+
+/* --- Share + comments ---------------------------------------------------- */
+.post-share {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.share-fb {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: .8rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  padding: .5rem .9rem;
+  border-radius: var(--radius);
+}
+.share-fb:hover { background: var(--accent-dk); color: #fff; text-decoration: none; }
+
+.comments {
+  max-width: var(--measure);
+  margin: 2.5rem auto 0;
+}
+.comments-title {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Sidebar ------------------------------------------------------------- */
+.sidebar { font-size: .92rem; }
+
+.widget {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.widget p { margin: .25rem 0 .5rem; color: var(--muted); }
+
+.widget-title {
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent);
+  margin: 0 0 .75rem;
+}
+
+.widget-list { list-style: none; margin: 0; padding: 0; }
+.widget-list li { padding: .3rem 0; border-bottom: 1px solid var(--line); }
+.widget-list li:last-child { border-bottom: 0; }
+
+.recent-list { margin-top: 1.1rem; }
+
+/* --- Profile photo (Rreth) ----------------------------------------------- */
+.profile-photo {
+  float: right;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 0 1rem 1.25rem;
+  border: 3px solid var(--line);
+}
+@media (max-width: 540px) {
+  .profile-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1.25rem;
+  }
+}
+
+/* --- Calendar ------------------------------------------------------------ */
+.calendar { margin-bottom: 1rem; }
+.calendar:last-child { margin-bottom: 0; }
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  font-family: var(--font-sans);
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: .5rem;
+}
+
+.cal-title { flex: 1; text-align: center; }
+
+.cal-nav {
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.cal-nav:hover { background: var(--accent); color: #fff; }
+.cal-nav:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  font-family: var(--font-sans);
+  font-size: .74rem;
+}
+
+.cal-wd {
+  text-align: center;
+  color: var(--muted);
+  font-size: .64rem;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  padding-bottom: .25rem;
+}
+
+.cal-day, .cal-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.cal-day.has-post {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.cal-day.has-post:hover { background: var(--accent-dk); }
+
+/* --- Pagination ---------------------------------------------------------- */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: .85rem;
+  margin-top: 2rem;
+}
+.pagination .disabled { color: var(--muted); }
+
+/* --- Footer -------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1.5rem 0;
+  margin-top: 1rem;
+}
+.site-footer p {
+  font-family: var(--font-sans);
+  font-size: .82rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 800px) {
+  html { font-size: 17px; }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

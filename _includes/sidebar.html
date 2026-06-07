@@ -1,0 +1,35 @@
+<aside class="sidebar">
+  <section class="widget">
+    <h2 class="widget-title">Rreth</h2>
+    <p>{{ site.description }}</p>
+    <p><a href="{{ '/rreth/' | relative_url }}">Lexo më shumë &rarr;</a></p>
+  </section>
+
+  <section class="widget">
+    <h2 class="widget-title">Temat</h2>
+    <ul class="widget-list">
+      {% for cat in site.categories_list %}
+        <li><a href="{{ '/categories/' | append: cat | downcase | replace: ' ', '-' | append: '/' | relative_url }}">{{ cat }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="widget">
+    <h2 class="widget-title">Postimet e fundit</h2>
+    {% include calendar.html %}
+    <ul class="widget-list recent-list">
+      {% for post in site.posts limit:6 %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="widget">
+    <h2 class="widget-title">Më gjeni</h2>
+    <ul class="widget-list">
+      {% if site.facebook_url != "" %}<li><a href="{{ site.facebook_url }}">Facebook</a></li>{% endif %}
+      {% if site.github_username != "" %}<li><a href="https://github.com/{{ site.github_username }}">GitHub</a></li>{% endif %}
+      {% if site.rss %}<li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>{% endif %}
+    </ul>
+  </section>
+</aside>

@@ -1,0 +1,71 @@
+# --- Cilësimet e faqes ----------------------------------------------------
+# Ndrysho këto vlera për ta personalizuar blogun.
+title: "Zekrijah Tërnava"
+tagline: "Mendime e reflektime"
+description: >-
+  Faqe personale me shkrime, mendime dhe reflektime.
+author: "Zekrijah Tërnava"
+email: "ternavaz@hotmail.com"
+lang: "sq"
+
+# Adresa e publikuar. Për një faqe përdoruesi në GitHub është https://USERNAME.github.io
+url: "https://ternavaz.github.io"
+baseurl: ""
+
+# Lidhjet në anshtyllë (lëre vlerën bosh për ta fshehur lidhjen).
+github_username: "ternavaz"
+facebook_url: "https://www.facebook.com/zekrijah.ternava"
+rss: true
+
+# Komentet me utterances. Vendos repo në formën "pronar/depo" dhe instalo
+# aplikacionin utterances te depoja: https://github.com/apps/utterances
+comments:
+  enabled: true
+  repo: "ternavaz/ternavaz.github.io"
+
+# --- Cilësimet e ndërtimit ------------------------------------------------
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+paginate: 5
+paginate_path: "/faqe:num/"
+
+# Temat e përdorura në blog. Shto ose hiq sipas dëshirës.
+categories_list:
+  - Tjera
+
+# Emrat shqip të muajve (indeksi 1 = Janar) dhe ditëve (e hëna e para).
+calendar:
+  months:
+    - ""
+    - "Janar"
+    - "Shkurt"
+    - "Mars"
+    - "Prill"
+    - "Maj"
+    - "Qershor"
+    - "Korrik"
+    - "Gusht"
+    - "Shtator"
+    - "Tetor"
+    - "Nëntor"
+    - "Dhjetor"
+  weekdays:
+    - "Hën"
+    - "Mar"
+    - "Mër"
+    - "Enj"
+    - "Pre"
+    - "Sht"
+    - "Die"
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - posts.txt
+  - vendor

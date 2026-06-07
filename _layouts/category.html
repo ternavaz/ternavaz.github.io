@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<header class="page-header">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.intro %}<p class="site-tagline">{{ page.intro }}</p>{% endif %}
+</header>
+
+<ul class="post-list">
+  {% assign posts = site.categories[page.category] %}
+  {% for post in posts %}
+    <li class="post-list-item">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{% include date_sq.html date=post.date %}</time>
+      </p>
+      <div class="post-excerpt">{{ post.excerpt }}</div>
+      <a class="read-more" href="{{ post.url | relative_url }}">Vazhdo leximin &rarr;</a>
+    </li>
+  {% else %}
+    <li><p>Ende nuk ka postime këtu.</p></li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,74 @@
+{%- comment -%}
+  Kalendar mujor interaktiv. Tregon muajin aktual si parazgjedhje
+  dhe lejon lëvizjen para ose prapa me butonat ‹ dhe ›.
+  Ditët me postime theksohen dhe çojnë te postimi përkatës.
+{%- endcomment -%}
+<div class="calendar" id="calendar" data-default="{{ site.posts.first.date | date: '%Y-%m' }}">
+  <div class="cal-head">
+    <button type="button" class="cal-nav" id="cal-prev" aria-label="Muaji i kaluar">&lsaquo;</button>
+    <span class="cal-title" id="cal-title"></span>
+    <button type="button" class="cal-nav" id="cal-next" aria-label="Muaji tjetër">&rsaquo;</button>
+  </div>
+  <div class="cal-grid" id="cal-grid" role="grid"></div>
+</div>
+
+<script>
+(function () {
+  var months = [{% for m in site.calendar.months %}{{ m | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  var weekdays = [{% for w in site.calendar.weekdays %}{{ w | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  var posts = [{% for post in site.posts %}{"date":"{{ post.date | date: '%Y-%m-%d' }}","url":{{ post.url | relative_url | jsonify }},"title":{{ post.title | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
+
+  var byDate = {};
+  posts.forEach(function (p) { byDate[p.date] = p; });
+
+  var root = document.getElementById("calendar");
+  if (!root) { return; }
+  var titleEl = document.getElementById("cal-title");
+  var gridEl = document.getElementById("cal-grid");
+
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+  // Muaji i parazgjedhur: muaji aktual.
+  var now = new Date();
+  var view = { year: now.getFullYear(), month: now.getMonth() + 1 };
+
+  function render() {
+    var year = view.year, month = view.month;
+    titleEl.textContent = months[month] + " " + year;
+
+    var firstWeekday = new Date(year, month - 1, 1).getDay(); // 0 = e diel
+    var mondayOffset = (firstWeekday + 6) % 7;                 // 0 = e hënë
+    var daysInMonth = new Date(year, month, 0).getDate();
+
+    var html = "";
+    for (var w = 0; w < weekdays.length; w++) {
+      html += '<span class="cal-wd">' + weekdays[w] + "</span>";
+    }
+    for (var e = 0; e < mondayOffset; e++) {
+      html += '<span class="cal-empty"></span>';
+    }
+    for (var day = 1; day <= daysInMonth; day++) {
+      var key = year + "-" + pad(month) + "-" + pad(day);
+      var post = byDate[key];
+      if (post) {
+        html += '<a class="cal-day has-post" href="' + post.url +
+                '" title="' + post.title.replace(/"/g, "&quot;") + '">' + day + "</a>";
+      } else {
+        html += '<span class="cal-day">' + day + "</span>";
+      }
+    }
+    gridEl.innerHTML = html;
+  }
+
+  function step(delta) {
+    view.month += delta;
+    if (view.month < 1) { view.month = 12; view.year -= 1; }
+    else if (view.month > 12) { view.month = 1; view.year += 1; }
+    render();
+  }
+
+  document.getElementById("cal-prev").addEventListener("click", function () { step(-1); });
+  document.getElementById("cal-next").addEventListener("click", function () { step(1); });
+  render();
+})();
+</script>

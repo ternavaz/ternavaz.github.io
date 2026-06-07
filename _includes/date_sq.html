@@ -1,0 +1,9 @@
+{%- comment -%}
+  Formaton një datë në shqip, p.sh. "6 Qershor 2026".
+  Përdorimi: {% include date_sq.html date=post.date %}
+{%- endcomment -%}
+{%- assign d = include.date -%}
+{%- assign day = d | date: "%-d" -%}
+{%- assign mon = d | date: "%-m" | plus: 0 -%}
+{%- assign yr = d | date: "%Y" -%}
+{{- day }} {{ site.calendar.months[mon] }} {{ yr -}}
